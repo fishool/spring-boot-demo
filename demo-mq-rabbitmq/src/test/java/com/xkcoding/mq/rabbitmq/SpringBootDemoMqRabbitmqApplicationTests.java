@@ -21,7 +21,9 @@ public class SpringBootDemoMqRabbitmqApplicationTests {
      */
     @Test
     public void sendDirect() {
-        rabbitTemplate.convertAndSend(RabbitConsts.DIRECT_MODE_QUEUE_ONE, new MessageStruct("direct message"));
+        for (int i = 0; i < 10000; i++) {
+            rabbitTemplate.convertAndSend(RabbitConsts.DIRECT_MODE_QUEUE_ONE, new MessageStruct("direct message"+i));
+        }
     }
 
     /**

@@ -59,7 +59,9 @@ public class RabbitMqConfig {
     }
 
     /**
-     * 分列模式队列
+     * 分列模式队列交换器
+     * fanout类型的Exchange路由规则非常简单，它会把所有发送到该Exchange的消息路由到所有与它绑定的Queue中。
+     * RabbitConsts.FANOUT_MODE_QUEUE  为对应的交换机名称, 只根据交换机名称匹配, 不辨别路由
      */
     @Bean
     public FanoutExchange fanoutExchange() {
@@ -93,6 +95,7 @@ public class RabbitMqConfig {
      * <li>路由格式必须以 . 分隔，比如 user.email 或者 user.aaa.email</li>
      * <li>通配符 * ，代表一个占位符，或者说一个单词，比如路由为 user.*，那么 user.email 可以匹配，但是 user.aaa.email 就匹配不了</li>
      * <li>通配符 # ，代表一个或多个占位符，或者说一个或多个单词，比如路由为 user.#，那么 user.email 可以匹配，user.aaa.email 也可以匹配</li>
+     *
      */
     @Bean
     public TopicExchange topicExchange() {
@@ -102,6 +105,8 @@ public class RabbitMqConfig {
 
     /**
      * 主题模式绑定分列模式
+     * with routeKey 匹配路由键
+     *
      *
      * @param fanoutExchange 分列模式交换器
      * @param topicExchange  主题模式交换器
@@ -134,7 +139,8 @@ public class RabbitMqConfig {
     }
 
     /**
-     * 延迟队列
+     * 延迟队列  延时队列需要rabbitmq安装对应的插件
+     * https://www.cnblogs.com/isunsine/p/11572457.html
      */
     @Bean
     public Queue delayQueue() {
