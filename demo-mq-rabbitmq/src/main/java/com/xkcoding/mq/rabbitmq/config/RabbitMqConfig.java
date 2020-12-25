@@ -106,7 +106,7 @@ public class RabbitMqConfig {
     /**
      * 主题模式绑定分列模式
      * with routeKey 匹配路由键
-     *
+     * 这个绑定表示: 主题交换机匹配 queue.# 路由的消息 , 统一转发给分列交换机
      *
      * @param fanoutExchange 分列模式交换器
      * @param topicExchange  主题模式交换器

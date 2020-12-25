@@ -60,6 +60,7 @@ public class SpringBootDemoMqRabbitmqApplicationTests {
 
     /**
      * 测试延迟队列发送
+     * x-delay 为固定格式
      */
     @Test
     public void sendDelay() {
