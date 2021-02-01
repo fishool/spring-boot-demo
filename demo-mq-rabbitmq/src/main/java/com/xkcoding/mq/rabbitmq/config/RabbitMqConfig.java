@@ -18,6 +18,13 @@ import java.util.Map;
  *
  * @author yangkai.shen
  * @date Created in 2018-12-29 17:03
+ *
+ * rabbimtmq 类型
+ * 1. 队列直连
+ * 2. 订阅模型-Fanout    广播，将消息交给所有绑定到交换机的队列
+ * 3. 订阅模型-Direct:     定向，把消息交给符合指定routing key  (key1)的队列
+ * 4. 订阅模型-Topic      通配符，把消息交给符合routing pattern（路由模式  key.*)  的队列
+ *
  */
 @Slf4j
 @Configuration
